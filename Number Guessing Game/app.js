@@ -1,6 +1,5 @@
 /*
 Basic game functionality
-
 - Guess a number between a min and a maximum not self defined at this moment
 - Players gets a certain amount of guesses
 - Notify player of guesses remaining
@@ -10,50 +9,59 @@ Basic game functionality
 
 
 // Game Values
-
 let min = 2,
     max = 10,
-    winningNum = 2,
+    winningNum = getWinningnumber(min, max),
     guessesLeft = 3;
 
 //UI Elements
-
-const UIgame = document.getElementById('#game');
+const UIgame = document.querySelector('#game');
 const minNum = document.querySelector('.min-num');
 const maxNum = document.querySelector('.max-num');
 const guessBtn = document.querySelector('#guess-btn');
 const guessInput = document.querySelector('#guess-input');
 const guessMessage = document.querySelector('.message');
 
+console.log(winningNum);
+
 
 // Assign UI min and max
-
 minNum.textContent = min;
 maxNum.textContent = max;
 
+//Play again event listener
+UIgame.addEventListener('mousedown', function (e) {
+
+    if (e.target.className === 'play-again') {
+
+        window.location.reload();
+    }
+
+});
+
 //Liset for guess
-guessBtn.addEventListener('click', function(){
+guessBtn.addEventListener('click', function () {
 
-   let guess = parseInt(guessInput.value);
+    let guess = parseInt(guessInput.value);
 
-   //Validate input
+    //Validate input
 
-    if(isNaN(guess) || guess < min || guess > max ){
+    if (isNaN(guess) || guess < min || guess > max) {
 
         setMessage(`Please enter a number between ${min} and ${max}`, 'red');
     }
 
     //Check if Won
-    if(guess === winningNum){
+    if (guess === winningNum) {
 
-        gameOver(true, `${winningNum} is the correct number!`, "green");
+        gameOver(true, `${winningNum} is the correct number!`, 'green');
 
     } else {
 
         //Wrong Number
         guessesLeft -= 1;
 
-        if(guessesLeft === 0){
+        if (guessesLeft === 0) {
 
             //Game Over - Loose
 
@@ -61,55 +69,54 @@ guessBtn.addEventListener('click', function(){
 
 
         } else {
-
             guessInput.style.borderColor = "red";
 
             //Clear Input
-
             guessInput.value = '';
-
             setMessage(`${guess} is not correct, ${guessesLeft} guesses left`, "red");
             // Game contin. - wrong answer
-
-
         }
-
-        
-
     }
-
 });
 
 //Game Over Function
 
-function  gameOver(won, msg){
+function gameOver(won, msg) {
 
     let color;
 
-    won === true ? color ='green' : color = "red";
+    won === true ? color = "green" : color = "red";
 
-      // Disable input if correct
-      guessInput.disabled = true;
+    // Disable input if correct
+    guessInput.disabled = true;
 
-      //Show the user won
-      guessInput.style.borderColor = color;
+    //Show the user won
+    guessInput.style.borderColor = color;
 
-      //text color
+    //text color
+    guessMessage.style.borderColor = color;
 
-      guessMessage.style.borderColor =color;
+
+    setMessage(msg, color);
+
+    //Play Again
+    guessBtn.value = 'Play Again';
+    guessBtn.className += 'play-again';
 
 
-      setMessage(msg);
 
 
 }
 
 
-function setMessage(message, color){
+function setMessage(message, color) {
 
     guessMessage.style.color = color;
-
     guessMessage.textContent = message;
 
+}
 
+function getWinningnumber(min, max) {
+
+    return Math.floor((Math.random() * (max - min + 1) + min));
 }
