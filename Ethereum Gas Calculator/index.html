@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    crossorigin="anonymous">
+
+    <style>
+    
+    #loading, #results{
+
+      display:none;
+
+    }
+    
+    </style>
+
+  <title>Ethereum Gas Calculator</title>
+</head>
+
+<body class="bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card card-body text-center mt-5">
+          <h1 class="heading display-5 pb-3">Ethereum TX calculator</h1>
+
+          <form id="transaction-form">
+            <div class="form-group">
+
+              <div class="input-group">
+                <span class="input-group-text">Price</span>
+                <input type="text" class="form-control" id="ethereum-price" placeholder="Ethereum Price">
+              </div>
+
+
+              <div class="input-group">
+                <span class="input-group-text">Gwei</span>
+                <input type="number" class="form-control" id="gwei-amount" placeholder="GWEI">
+              </div>
+
+
+              <div class="input-group">
+                <span class="input-group-text">Gas</span>
+                <input type="number" class="form-control" id="gas-amount" placeholder="GAS">
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Calculate" class="btn btn-dark btn-block">
+              </div>
+            </div>
+          </form>
+
+          <!--///////////////////////////////////////////////////// Loader ///////////////////////////////////////////////////-->
+
+          <div id="loading">
+
+            <img src="img/loading.gif" alt="">
+
+
+          </div>
+
+
+
+
+          <!-- Results -->
+          <!-- RESULTS -->
+          <div id="results" class="">
+            <h5>Results</h5>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-text">Max TX cost</span>
+                <input type="number" class="form-control" id="amount" disabled>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+      crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
